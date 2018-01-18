@@ -1,0 +1,10 @@
+{
+	"name": "eslint-disable-parsing",
+	"version": "0.0.1",
+	"description": "Providers eslint-disable-parsing comment",
+	"keywords": ["eslint"],
+	"main": "index.js",
+	"author": "Alexander Ruliov <alexander.ruliov@gmail.com>",
+	"repository": "github:Rulexec/eslint-disable-parsing",
+	"license": "ISC"
+}
