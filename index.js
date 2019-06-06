@@ -1,4 +1,5 @@
-exports.parse = function(code, options) {
+exports.parse = parse;
+function parse(code, options) {
 	const parser = options && options.disableParsingParser ? require(options.disableParsingParser) : require('espree');
 
 	const lines = code.split('\n');
@@ -48,5 +49,15 @@ exports.parse = function(code, options) {
 
 	const newCode = newLines.join('\n');
 
-	return parser.parse(newCode, options);
+	if (typeof parser.parseForESLint === 'function') {
+		return parser.parseForESLint(newCode, options);
+	} else {
+		return parser.parse(newCode, options);
+	}
+}
+
+exports.parseForESLint = function(code, options) {
+	const parser = options && options.disableParsingParser ? require(options.disableParsingParser) : require('espree');
+
+	return parse(code, options);
 };
